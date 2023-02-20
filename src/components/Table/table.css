@@ -1,0 +1,10 @@
+
+
+.table--secondary {
+	border-bottom-color: transparent;
+	border-top: 1px solid #eff1f3;
+}
+
+.table--secondary:not(:last-of-type) {
+	border-bottom-color: transparent;
+}
