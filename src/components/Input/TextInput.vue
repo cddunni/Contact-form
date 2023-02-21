@@ -1,4 +1,8 @@
 <template>
+  <ValidationProvider tag="div"
+		v-slot="{ errors, ariaMsg }"
+		:rules="$attrs.rules"
+		:name="name">
   <div v-if="type === 'textarea'">
     <label :for="id" class="text-grey mb-1 block text-sm">
       {{ label }}
@@ -8,9 +12,11 @@
       :placeholder="placeHolder"
       :id="id"
       :disabled="disabled"
+      :name="name"
       :value="value"
       @input="$emit('input', $event.target.value)"
       :rows="rows"
+      autocomplete
     />
   </div>
   <div v-else class="" :class="inputBoxStyle">
@@ -23,19 +29,19 @@
       :id="id"
       :min="min"
       :max="max"
+      :name="name"
       :value="value"
       :disabled="disabled"
       @input="$emit('input', $event.target.value)"
       :readonly="readonly"
       autocomplete
     />
-    <!-- <span id="validationFeedback" class="invalid-feedback">
-      {{ invalidMsg }}
-    </span> -->
     <span class="text-xs text-grey block">
       <slot name="meta"></slot>
     </span>
   </div>
+  <span class="text-red text-xs" v-bind="ariaMsg">{{ errors[0] }}</span>
+  </ValidationProvider>
 </template>
 
 <script src="./text-input.js"></script>

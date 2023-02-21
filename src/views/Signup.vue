@@ -13,47 +13,48 @@
             Fill the form with accurate information to create your profile
           </p>
         </div>
+        <ValidationObserver v-slot="{invalid}"">
         <form class="action" @submit.prevent="signUp">
           <div class="grid gap-6 grid-cols-12">
             <div class="col-span-12 md:col-span-6">
-              <textInput
+              <TextInput
                 :rules="{ required: true }"
                 id="firstName"
-                name="firstName"
+                name="first name"
                 label="First Name"
                 placeHolder="First Name"
                 v-model="formData.first_name"
-              ></textInput>
+              ></TextInput>
             </div>
             <div class="col-span-12 md:col-span-6">
-              <textInput
-                :rules="{ required: true }"
+              <TextInput
+                rules="required"
                 id="lastName"
-                name="lastName"
+                name="last name"
                 label="Last Name"
                 placeHolder="Last Name"
                 v-model="formData.last_name"
-              ></textInput>
+              ></TextInput>
             </div>
             <div class="col-span-12 md:col-span-6">
-              <textInput
-                :rules="{ required: true }"
+              <TextInput
+                rules="required|email"
                 id="email"
                 name="email"
                 label="Email"
                 placeHolder="Email"
                 v-model="formData.email"
-              ></textInput>
+              ></TextInput>
             </div>
             <div class="col-span-12 md:col-span-6">
-              <textInput
-                :rules="{ required: true }"
+              <TextInput
+                rules="required"
                 id="phone_number"
-                name="phone_number"
+                name="phone number"
                 label="Phone number"
                 placeHolder="Phone number"
                 v-model="formData.phone_number"
-              ></textInput>
+              ></TextInput>
             </div>
             <div class="col-span-12">
               <Dropdown
@@ -63,8 +64,8 @@
               />
             </div>
             <div class="col-span-12">
-              <textInput
-                :rules="{ required: true }"
+              <TextInput
+                rules="required"
                 id="message"
                 type="textarea"
                 name="message"
@@ -72,7 +73,7 @@
                 rows="5"
                 placeHolder="Type here..."
                 v-model="formData.message"
-              ></textInput>
+              ></TextInput>
             </div>
             <div class="col-span-12" v-if="!$route.query.id">
               <div class="flex">
@@ -84,14 +85,15 @@
                 </p>
               </div>
             </div>
-            <!-- <p>{{ $store.state.users }}</p> -->
             <div class="col-span-12">
-              <c-button size="lg" class="mt-7 w-full text-white">
+              <CButton :disabled="invalid ||
+        (!agreeToTerms && !$route.query.id)" size="lg" class="mt-7 w-full text-white">
                 {{ $route.query.id ? "Update" : "Submit" }}
-              </c-button>
+              </CButton>
             </div>
           </div>
         </form>
+        </ValidationObserver>
       </div>
     </div>
   </section>

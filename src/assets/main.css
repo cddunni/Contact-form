@@ -24,3 +24,7 @@ body{
   background: rgb(1, 135, 1);
   border-radius: 8px;
 }
+button:disabled, button:disabled:hover {
+  opacity: .7;
+  cursor: not-allowed;
+}

@@ -12,4 +12,6 @@
 </template>
 
 <script src="./button.js"></script>
-<style lang="" src="" scoped></style>
+<style src="">
+
+</style>

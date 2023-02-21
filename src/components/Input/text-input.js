@@ -1,4 +1,5 @@
 export default {
+
   name: "TextInput",
   props: {
     id: String,
@@ -14,6 +15,9 @@ export default {
     rows: String,
     min: String,
     max: String,
-    invalidMsg: String,
+    name: String
   },
+  created() {
+    console.log(this.$attrs);
+  }
 };

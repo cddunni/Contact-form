@@ -50,7 +50,7 @@
     <div
       ref="listbox"
       v-if="showDropdown"
-      class="bg-white shadow-shadowOne rounded z-100 absolute overflow-x-hidden"
+      class="bg-white shadow-shadowOne rounded z-100 absolute w-full max-h-40 overflow-x-hidden"
       :class="{
         'left-0': type !== 'icon',
         'right-[0px]': type === 'icon',
